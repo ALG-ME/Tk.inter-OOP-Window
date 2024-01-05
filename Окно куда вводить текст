@@ -1,0 +1,41 @@
+import tkinter as tk
+
+
+def btc():
+    user_text = entry.get()  # Получили текст из поля
+    if user_text:
+        res_lab.config(text=f'Ваш текст: {user_text}')
+    else:
+        res_lab.config(text=f'Вы не ввели текст')
+
+
+def clt():
+    entry.delete(0, tk.END)
+    err_lab.config(text='')
+
+
+# Создаем основное окно приложения
+root = tk.Tk()
+root.title('МОЯ СОФТИНА')
+
+# Добавляем виджет Entry (поле для ввода текста)
+entry = tk.Entry(root)
+entry.pack()
+
+# Создаём кнопку
+show_button = tk.Button(root, text='показать текст', command=btc)
+show_button.pack()
+
+# Создаем кнопку "Очистить"
+clb = tk.Button(root, text="Очистить", command=clt)
+clb.pack()
+
+# Создаем метку для вывода сообщения
+res_lab = tk.Label(root, text='', fg='grey')
+res_lab.pack()
+
+# Создаем метку для вывода сообщения об ошибке
+err_lab = tk.Label(root, text="", fg="red")
+err_lab.pack()
+
+root.mainloop()
